@@ -3,8 +3,336 @@
 @import 'includes/nav';
 @import 'includes/footer';
 
-html, body {
-	width: 100%;
-	height: 100%;
-	background: #FEFEFE;
+$primary : #373737;
+$bgcolor : #F4F4F4;
+$bgtext  : rgba(220,208,192, .14);
+$overlay : rgba(220,208,192, .5);
+$tdborder: rgba(220,208,192, .0);
+$active  : #c0b283;
+$tp      : rgba(0,0,0,0);
+$basefont: "Helvetica Neue", sans-serif;
+$theight : 400px;
+$dtwidth : 100px;
+$edwidth : 20px;
+
+body {
+    background-color: $bgcolor;
+    font-family: $basefont;
+    font-weight: 100;
+    font-size: 16px;
+    color: $bgtext;
+    overflow: hidden
+}
+
+h1 {
+    font-family: "Didot", serif;
+    font-size: 232px;
+    text-align: center;
+    z-index: -1;
+    overflow: hidden;
+    position: fixed;
+    top: -20px;
+}
+main {
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    right: 0;
+}
+
+form {
+    width: 50%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.input,
+.go {
+    margin: 5px;
+    padding: 5px;
+    width: 310px;
+    height: 10%;
+    margin: 0 auto;
+}
+
+@keyframes onfocus {
+    from {
+        background-color: $bgcolor
+    } to {
+        background-color: $overlay;
+    }
+}
+
+@keyframes onsuccess {
+    0% {
+        background-color: $tp;
+        color: $tp;
+    }
+    15% {
+        background-color: $active;
+        color: $primary;
+    }
+    70% {
+        background-color: $active;
+        color: $primary;
+    }
+    100% {
+        background-color: $tp;
+        color: $tp;
+    }
+}
+
+.success {
+    animation-name: onsuccess;
+    animation-duration: 3s;
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $active;
+    color: $primary;
+}
+
+#success-indicator p {
+    font-size: 20px;
+    width: 240px;
+    font-weight: 200;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    letter-spacing: .1em;
+    padding: 5px;
+}
+
+#success-indicator {
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $tp;
+    color: $tp;
+}
+
+#wrapper-a form input,
+#wrapper-a textarea {
+    display: block;
+    color: $primary;
+    font-size: 16px;
+    border: none;
+    background-color: $tp;
+    border-bottom: 1px dashed $primary;
+    width: 310px;
+    height: 25px;
+    outline: none;
+    float: right;
+    font-family: $basefont;
+    font-weight: 300;
+}
+
+.data:focus,
+#submit:hover {
+    background-color: $overlay;
+    animation-name: onfocus;
+    animation-duration: .5s;
+}
+
+#wrapper-a textarea {
+    width: 308px;
+    height: 75px;
+    resize: none;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(30, 31, 32, .4);
+    font-family: $basefont;
+    font-weight: 300;
+}
+
+#wrapper-a input[type=button] {
+    margin-top: 15px;
+    width: 100px;
+    height: 24px;
+    border: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.input label,
+.go label {
+    margin-top: 10px;
+    padding-top: 5px;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    padding: none;
+    border-bottom: none;
+    color: $primary;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline-block;
+    padding: 6px;
+    margin-left: -4.5px;
+    width: 32.3%;
+    height: 100%;
+    letter-spacing: .243em;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.inactive:hover {
+    animation-name: onfocus;
+    animation-duration: .5s;
+    background-color: $overlay;
+}
+
+.active {
+    background-color: $active
+}
+
+table {
+    width:100%;
+    table-layout: fixed;
+}
+
+#wrapper-e, #wrapper-h {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+
+.tbhead {
+    width: 800px;
+    background-color: $overlay;
+    margin-bottom: 0;
+    thead tr th{
+        padding: 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        color: $primary;
+        text-transform: uppercase;
+    }
+}
+
+.tbbody td:nth-child(3){
+    max-width: $dtwidth
+}
+.tbbody td:nth-child(6), td:nth-child(6) {
+    max-width: $edwidth
+}
+
+.tbbody {
+    height:$theight;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid $overlay;
+}
+
+table td {
+    padding: 20px;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: $primary;
+    border-bottom: 1px solid $tdborder;
+}
+
+#wrapper-e {
+    td:nth-child(1), th:nth-child(1) {
+        width: 14%
+    } td:nth-child(2), th:nth-child(2) {
+        width: 11%
+    } td:nth-child(3), th:nth-child(3) {
+        width: 32%
+    } td:nth-child(4), th:nth-child(4) {
+        width: 9%
+    } td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7) {
+        width: 6%
+    }
+}
+
+#wrapper-e {
+    td:nth-child(1), th:nth-child(1) {
+        width: 20%
+    } td:nth-child(2), th:nth-child(2) {
+        width: 16%
+    } td:nth-child(3), th:nth-child(3) {
+        width: 32%
+    } td:nth-child(4), th:nth-child(4) {
+        width: 16%
+    } td:nth-child(5), td:nth-child(5) {
+        width: 19%
+    }
+}
+
+#searchbar {
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+#searchbar input {
+    display: block;
+    color: $primary;
+    border: none;
+    background-color: $overlay;
+    max-height: 32px;
+    width: 32px;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    transition: width .5s;
+}
+
+#searchbar input:focus{
+    width: 100%;
+    transition: width .5s;
+}
+
+
+.delete, .edit {
+    width:8%;
+    cursor: pointer;
+}
+
+.delete span, .edit span {
+    width: 50%;
+    text-align: center;
+}
+
+.delete:hover, .edit:hover {
+    background-color: $overlay;
+    animation-name: onfocus;
+    animation-duration: .5s;
+}
+
+::-webkit-scrollbar{
+    width: 6px
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
 }

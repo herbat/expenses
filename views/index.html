@@ -1,17 +1,84 @@
 <!DOCTYPE html>
 <html ng-app="Home">
   <head>
-    <title>Electron Boilerplate: Hello World!</title>
-    <!-- bower:css -->
-    <link rel="stylesheet" href="../dist/vendor/skeleton/css/skeleton.css" />
-    <!-- endbower -->
+    <title>Expenses</title>
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../dist/css/style.css">
   </head>
-  <body ng-controller="HomeController">
+  <body ng-controller="TabController as tabs">
+    <nav>
+      <ul id="navlist">
+        <li id="add"  ng-click="tabs.setTab(1)" ng-class="{active:tabs.isActive(1)}">Add new</li>
+        <li id="edit" ng-click="tabs.setTab(2)" ng-class="{active:tabs.isActive(2)}">Edit</li>
+      </ul>
+    </nav>
 
-    <h1>Electron Boilerplate is alive!</h1>
+    <main id="main">
+      <div id="wrapper-a" ng-show="tabs.isActive(1)" ng-controller="FormController as form">
+        <div id="success-indicator" ng-class="{success:form.success, nosuccess:!form.success}">
+          <p>Successfully added!</p>
+        </div>
+        <form>
+          <div class="input">
+            <label>
+              <input id="shop" type="text" placeholder="Shop" class="data" ng-model="form.input.shop">
+            </label>
+          </div>
+          <div class="input">
+            <label>
+              <input id="type" type="text" placeholder="Type" class="data" ng-model="form.input.type">
+            </label>
+          </div>
+          <div class="input">
+            <label>
+              <textarea id="details" rows="4" placeholder="Details" class="data" ng-model="form.input.details"></textarea>
+            </label>
+          </div>
+          <div class="input">
+            <label>
+              <input id="sum" type="text" placeholder="Sum(Ft)" class="data" ng-model="form.input.sum">
+            </label>
+          </div>
+          <div class="input">
+            <label>
+              <input id="date" type="text" placeholder="Date" value="" class="data" ng-model="form.input.date">
+            </label>
+          </div>
+          <div class="go" ng-show="form.valid()">
+            <input type="button" value="Go" ng-click="form.submit()" id="submit">
+          </div>
+        </form>
+      </div>
+      <div id="wrapper-e" ng-show="tabs.isActive(2)" ng-controller="ListController as list">
+        <div id="searchbar" >
+          <input type="text" ng-model="list.queryIn" ng-keyup="list.processQuery()">
+        </div>
+        <div class="tbhead">
+          <table cellpadding="0" cellspacing="0" border="0" >
+            <thead>
+              <tr>
+                <th ng-repeat="head in list.heads"><span>{{head}}</span></th>
+                <th><span></span></th>
+                <th><span></span></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="tbbody">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tbody >
+              <tr ng-repeat="row in list.rows">
+                <td ng-repeat="cell in row | filter:noIds">{{cell}}</td>
+                <td ng-click="list.remove(row[5])">X</td>
+                <td ng-click="list.edit(row[5])"  >E</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
 
+    <div><h1>Expenses</h1></div>
     <!-- REQUIRED -->
     <script src="../jspm_packages/system.js"></script>
     <script src="../config.js"></script>
@@ -20,6 +87,5 @@
     <script src="../dist/vendor/angular-mocks/angular-mocks.js"></script>
     <!-- endbower -->
     <script src="../dist/app/home/home.js"></script>
-    <script src="../dist/js/sample.js"></script>
   </body>
 </html>

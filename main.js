@@ -5,7 +5,7 @@ const {
 	app,
 	BrowserWindow,
 	crashReporter
-} = require('electron')
+} = require('electron');
 var path = require('path');
 
 // ####################################################
@@ -17,7 +17,7 @@ crashReporter.start({
   companyName: 'YourCompany',
   submitURL: 'https://your-domain.com/url-to-submit',
   autoSubmit: true
-})
+});
 
 var mainWindow = null;
 var options = {
@@ -40,7 +40,7 @@ app.on('window-all-closed', function() {
 });
 
 app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width: 1400, height: 650});
   mainWindow.loadURL(path.join('file://', __dirname, options.views_dir, options.root_view));
   if(options.debug) { mainWindow.openDevTools(); }
   mainWindow.on('closed', function() { mainWindow = null; });
