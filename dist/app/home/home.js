@@ -44,6 +44,7 @@
                 }
             };
             if(this.queryIn.length === 0) {res = undefined;}
+            console.log(res);
             this.queryOut = res;
             this.refresh();
         };

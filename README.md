@@ -1,19 +1,10 @@
-# Electron-Boilerplate
-A template for Electron projects to build/publish Mac/Windows/Linux compatible applications
-
-[![Circle CI](https://circleci.com/gh/Stephn-R/electron-angular-boilerplate.svg?style=svg&circle-token=6a9c22099623944c66e2c82e5a11fdd0eb9c2bdf)](https://circleci.com/gh/Stephn-R/electron-angular-boilerplate) [![Dependency Status](https://david-dm.org/Stephn-R/Electron-Angular-Boilerplate.svg)](https://david-dm.org/Stephn-R/Electron-Angular-Boilerplate) [![devDependency Status](https://david-dm.org/Stephn-R/Electron-Angular-Boilerplate/dev-status.svg)](https://david-dm.org/Stephn-R/Electron-Angular-Boilerplate#info=devDependencies)
+# Expenses
+A new Expenses app using npm, AngularJS, and Electron. 
 
 ### Table of Contents:
 ---
 
 1. [Installation](#install)
-2. [The Stack](#stack)
-3. [Adding new views](#views)
-4. [Adding/Managing Bower Resources](#bower)
-5. [Building the Desktop Application](#build-app)
-6. [Testing](#testing)
-7. [FAQ](#faq)
-8. [Contributing](#contributing)
 
 ### <a name="install"></a> Installation:
 
